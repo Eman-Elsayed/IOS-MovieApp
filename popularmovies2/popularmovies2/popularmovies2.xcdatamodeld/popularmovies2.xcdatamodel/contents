@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13528" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Favorites" representedClassName="Favorites" syncable="YES" codeGenerationType="class">
+        <attribute name="mid" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="moverview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mposter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mrelease" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mvote" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="favoritereviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviews" inverseName="favoritemovie" inverseEntity="Reviews" syncable="YES"/>
+        <relationship name="favoritetrailers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trailers" inverseName="favoritemovie" inverseEntity="Trailers" syncable="YES"/>
+    </entity>
+    <entity name="Movies" representedClassName="Movies" syncable="YES" codeGenerationType="class">
+        <attribute name="mid" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="moverview" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mposter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mrelease" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mvote" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Reviews" inverseName="movie" inverseEntity="Reviews" syncable="YES"/>
+        <relationship name="trailers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trailers" inverseName="movie" inverseEntity="Trailers" syncable="YES"/>
+    </entity>
+    <entity name="Reviews" representedClassName="Reviews" syncable="YES" codeGenerationType="class">
+        <attribute name="rauther" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rcontent" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favoritemovie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorites" inverseName="favoritereviews" inverseEntity="Favorites" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movies" inverseName="reviews" inverseEntity="Movies" syncable="YES"/>
+    </entity>
+    <entity name="Trailers" representedClassName="Trailers" syncable="YES" codeGenerationType="class">
+        <attribute name="tkey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ttitle" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="favoritemovie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Favorites" inverseName="favoritetrailers" inverseEntity="Favorites" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movies" inverseName="trailers" inverseEntity="Movies" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Movies" positionX="63" positionY="-433" width="128" height="163"/>
+        <element name="Trailers" positionX="225" positionY="-477" width="128" height="103"/>
+        <element name="Reviews" positionX="243" positionY="-324" width="128" height="103"/>
+        <element name="Favorites" positionX="439" positionY="-487" width="128" height="163"/>
+    </elements>
+</model>
